@@ -1,0 +1,113 @@
+package assignment1;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author USER
+ */
+public class Assignment1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        String[] datatype = {"bollean", "int", "char", "float", "byte", "short", "long", "double"};
+        String[] identifier = {"a", "b", "c", "d", "e"};
+        String[] operator = {"+", "-", "*", "/", "<", ">", "(", ")", "="};
+        String[] value = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] others = {";", ",", "||", "&&", "^"};
+
+        ArrayList<String> ar = new ArrayList<String>();
+        ArrayList<String> br = new ArrayList<String>();
+        ArrayList<String> cr = new ArrayList<String>();
+        ArrayList<String> dr = new ArrayList<String>();
+        ArrayList<String> er = new ArrayList<String>();
+
+        System.out.println("Enter the file name:for only here enter->amin.txt");
+
+        Scanner bb = new Scanner(System.in);
+        String kk = bb.nextLine();
+        String b = "";
+        try {
+
+            Scanner input = new Scanner(new File("" + kk));
+
+            while (input.hasNext()) {
+
+                b += input.nextLine() + " ";
+
+            }
+
+            input.close();
+
+        } catch (FileNotFoundException ex) {
+
+            System.out.println(ex.getMessage() + "the file not found...");
+            System.exit(0);
+
+        }
+
+        String[] sentence = b.split(" ");
+        for (String word : sentence) {
+            System.out.println(word);
+            for (int i = 0; i < datatype.length; i++) {
+                if (word.equals(datatype[i])) {
+
+                    ar.add(word);
+                }
+
+            }
+            for (int i = 0; i < identifier.length; i++) {
+                if (word.equals(identifier[i])) {
+
+                    br.add(word);
+                }
+            }
+
+            for (int i = 0; i < operator.length; i++) {
+                if (word.equals(operator[i])) {
+
+                    cr.add(word);
+                }
+            }
+
+            for (int i = 0; i < value.length; i++) {
+                if (word.equals(value[i])) {
+
+                    dr.add(word);
+                }
+            }
+            for (int i = 0; i < others.length; i++) {
+                if (word.equals(others[i])) {
+
+                    er.add(word);
+                }
+            }
+
+        }
+
+        System.out.println("datatype : " + ar + ",");
+        System.out.println("identifier : " + br + ",");
+        System.out.println("operator : " + cr + ",");
+        System.out.println("value : " + dr + ",");
+        System.out.println("others : " + er + ",");
+        // TODO code application logic here
+    }
+
+}
+
+
+*
+output
+Keywords: int, float, if, else
+Identifiers: a, b, c, d, e
+Math Operators: +, -, =
+Logical Operators: >
+Numerical Values: 5, 6, 2.0, 6.0
+Others: , ; ( ) { }
+*/
