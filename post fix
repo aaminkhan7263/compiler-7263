@@ -1,0 +1,198 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int top = -1;
+char stack[100];
+
+
+void push(char);
+void pop();
+void find_top();
+
+void main()
+{
+	int i;
+	char a[100];
+	printf("enter expression\n");
+	scanf("%s", &a);
+	for (i = 0; a[i] != '\0';i++)
+	{
+		if (a[i] == '(')
+		{
+			push(a[i]);
+		}
+		else if (a[i] == ')')
+		{
+			pop();
+		}
+	}
+	find_top();
+}
+
+
+void push(char a)
+{
+	stack[top] = a;
+	top++;
+}
+
+void pop()
+{
+	if (top == -1)
+	{
+		printf("expression is invalid\n");
+		exit(0);
+	}
+	else
+	{
+		top--;
+	}
+}
+
+void find_top()
+{
+	if (top == -1)
+		printf("\nexpression is valid\n");
+
+
+
+	else
+		printf("\nexpression is invalid\n");
+}
+
+
+output:a+b
+expression valid
+
+
+
+
+
+#include<stdio.h>
+
+#include <stdlib.h>
+#include <string.h>
+
+char stack[20];
+int top = -1;
+void push(char x );
+
+void pop();
+void find_top();
+
+
+    stack[++top] =x;
+
+
+char pop()
+{
+    if(top == -1)
+        return -1;
+    else
+        return stack[top--];
+}
+
+int priority(char x)
+{
+    if(x == '(')
+        return 0;
+    if(x == '+' || x == '-')
+        return 1;
+    if(x == '*' || x == '/')
+        return 2;
+}
+
+main()
+{
+    char exp[20];
+    char *e, x;
+    printf("Enter the expression :: ");
+    scanf("%s",exp);
+    e = exp;
+
+
+
+    for (i = 0; a[i] != '\0';i++)
+	{
+		if (a[i] == '(')
+		{
+			push(a[i]);
+		}
+		else if (a[i] == ')')
+		{
+			pop();
+		}
+	}
+	find_top();
+}
+
+// to push elements in stack
+void push(char a)
+{
+	stack[top] = a;
+	top++;
+}
+
+// to pop elements from stack
+void pop()
+{
+	if (top == -1)
+	{
+		printf("expression is invalid\n");
+		exit(0);
+	}
+	else
+	{
+		top--;
+	}
+}
+
+// to find top element of stack
+void find_top()
+{
+	if (top == -1)
+		printf("\nexpression is valid\n");
+
+
+
+	else
+		printf("\nexpression is invalid\n");
+}
+
+
+
+
+
+
+    while(*e != '\0')
+    {
+        if(isalnum(*e))
+            printf("%c",*e);
+        else if(*e == '(')
+            push(*e);
+        else if(*e == ')')
+        {
+            while((x = pop()) != '(')
+                printf("%c", x);
+        }
+        else
+        {
+            while(priority(stack[top]) >= priority(*e))
+                printf("%c",pop());
+            push(*e);
+        }
+        e++;
+    }
+    while(top != -1)
+    {
+        printf("%c",pop());
+    }
+}
+
+
+
+
+output:a+b
+ba+
